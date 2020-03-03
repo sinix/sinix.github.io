@@ -28,7 +28,7 @@
 <meta property="og:description" content="VNC (Virtual Network Computing) is a technology for remote desktop sharing. VNC enables the visual desktop display of one computer to be remotely viewed and controlled over a network connection. It is">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-01-30T16:09:45.000Z">
-<meta property="article:modified_time" content="2020-03-03T10:24:43.674Z">
+<meta property="article:modified_time" content="2020-03-03T10:29:17.056Z">
 <meta property="article:author" content="Q.Shuan">
 <meta property="article:tag" content="Debian">
 <meta property="article:tag" content="VNC">
@@ -182,7 +182,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-03 18:24:43" itemprop="dateModified" datetime="2020-03-03T18:24:43+08:00">2020-03-03</time>
+                <time title="修改时间：2020-03-03 18:29:17" itemprop="dateModified" datetime="2020-03-03T18:29:17+08:00">2020-03-03</time>
               </span>
 
           
@@ -225,10 +225,6 @@
 <h2 id="Step-4-Connect-from-VNC-client"><a href="#Step-4-Connect-from-VNC-client" class="headerlink" title="Step 4 : Connect from VNC client"></a>Step 4 : Connect from VNC client</h2><p>Let’s test our setup by connecting to vnc server, For that we need local vnc client, it depends upon the local operating system. I am using windows and I am going to use <a href="https://www.realvnc.com/download/vnc/" target="_blank" rel="noopener">Realvnc</a> as a client.</p>
 <p>RealVNC is available for almost all operating system platform like Windows, macOS, Linux (Debian and RPM based), Solaris, etc. You can use other clients also.</p>
 <p>Open Realvnc and enter <strong>{vnc-server_host name_or_ip}:5901</strong> in vnc server address. </p>
-<h2 id="Change-VNC-server-port"><a href="#Change-VNC-server-port" class="headerlink" title="Change VNC server port"></a>Change VNC server port</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">which</span> vncserver</span><br><span class="line">$ vi /usr/bin/vncserver</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="Stop-VNC-server"><a href="#Stop-VNC-server" class="headerlink" title="Stop VNC server"></a>Stop VNC server</h2><p>Use below command to stop vnc server on port Dispay 1 (or on port 5901)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vncserver -<span class="built_in">kill</span> :1</span><br></pre></td></tr></table></figure>
 
@@ -239,11 +235,17 @@
 <li>5900+N – VNC Client Port;</li>
 <li>6000+N – X Server port.</li>
 </ul>
-<p>Type the following command to find out VNC port:<br><code># netstat -tulp | grep vnc</code></p>
+<p>Type the following command to find out VNC port:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tulp | grep vnc</span><br></pre></td></tr></table></figure>
+
 <p>and update iptables </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 5901 -j ACCEPT</span><br></pre></td></tr></table></figure>
 
-<h2 id="Install-iceweasel"><a href="#Install-iceweasel" class="headerlink" title="Install iceweasel"></a>Install iceweasel</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install iceweasel</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Change-VNC-server-port"><a href="#Change-VNC-server-port" class="headerlink" title="Change VNC server port"></a>Change VNC server port</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">which</span> vncserver</span><br><span class="line">$ vi /usr/bin/vncserver</span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="Install-iceweasel"><a href="#Install-iceweasel" class="headerlink" title="Install iceweasel"></a>Install iceweasel</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install iceweasel</span><br></pre></td></tr></table></figure>
 
 
 
@@ -335,7 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-Installation-of-VNC-and-XFCE"><span class="nav-number">1.</span> <span class="nav-text">Step 1 : Installation of VNC and XFCE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-Create-a-VNC-User"><span class="nav-number">2.</span> <span class="nav-text">Step 2 : Create a VNC User</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-Start-VNC-server"><span class="nav-number">3.</span> <span class="nav-text">Step 3 : Start VNC server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-Connect-from-VNC-client"><span class="nav-number">4.</span> <span class="nav-text">Step 4 : Connect from VNC client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-VNC-server-port"><span class="nav-number">5.</span> <span class="nav-text">Change VNC server port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stop-VNC-server"><span class="nav-number">6.</span> <span class="nav-text">Stop VNC server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VNC-server-port"><span class="nav-number">7.</span> <span class="nav-text">VNC server port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-iceweasel"><span class="nav-number">8.</span> <span class="nav-text">Install iceweasel</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-Installation-of-VNC-and-XFCE"><span class="nav-number">1.</span> <span class="nav-text">Step 1 : Installation of VNC and XFCE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-Create-a-VNC-User"><span class="nav-number">2.</span> <span class="nav-text">Step 2 : Create a VNC User</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-Start-VNC-server"><span class="nav-number">3.</span> <span class="nav-text">Step 3 : Start VNC server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-Connect-from-VNC-client"><span class="nav-number">4.</span> <span class="nav-text">Step 4 : Connect from VNC client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stop-VNC-server"><span class="nav-number">5.</span> <span class="nav-text">Stop VNC server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VNC-server-port"><span class="nav-number">6.</span> <span class="nav-text">VNC server port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-VNC-server-port"><span class="nav-number">7.</span> <span class="nav-text">Change VNC server port</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">8.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-iceweasel"><span class="nav-number">9.</span> <span class="nav-text">Install iceweasel</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
